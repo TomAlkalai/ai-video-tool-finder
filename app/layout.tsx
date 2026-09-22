@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://aivideofinder.com"),
   title: { default: "AI Video Tool Finder", template: "%s" },
   description: "Compare AI video generation and editing tools by use case.",
+  verification: {
+    other: {
+      "impact-site-verification": "ae5f6e92-967e-4958-a57c-79b2016ec63b",
+    },
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
