@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import type { Product } from "@/data/products";
 import { AffiliateCta } from "./AffiliateCta";
 
@@ -46,7 +47,9 @@ export function ComparisonTable({ products }: { products: Product[] }) {
           <th className="border-b border-gray-200 py-2 pr-4"></th>
           {products.map((p) => (
             <th key={p.slug} className="border-b border-gray-200 py-2 pr-4 align-bottom">
-              <div className="text-base font-semibold">{p.name}</div>
+              <Link href={`/tools/${p.slug}`} className="text-base font-semibold hover:underline">
+                {p.name}
+              </Link>
             </th>
           ))}
         </tr>

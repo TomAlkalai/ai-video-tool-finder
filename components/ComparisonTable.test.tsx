@@ -49,4 +49,10 @@ describe("ComparisonTable", () => {
     expect(screen.getByRole("link", { name: /visit veed/i })).toHaveAttribute("href", "/go/veed");
     expect(screen.getByRole("link", { name: /visit descript/i })).toHaveAttribute("href", "/go/descript");
   });
+
+  it("links each product name to its tool detail page", () => {
+    render(<ComparisonTable products={products} />);
+    expect(screen.getByRole("link", { name: "VEED" })).toHaveAttribute("href", "/tools/veed");
+    expect(screen.getByRole("link", { name: "Descript" })).toHaveAttribute("href", "/tools/descript");
+  });
 });
