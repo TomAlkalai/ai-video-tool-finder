@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Video Tool Finder
 
-## Getting Started
+Affiliate comparison site for AI video generation/editing tools. See
+`docs/superpowers/specs/2026-09-22-ai-video-finder-design.md` for the full
+design spec and `docs/superpowers/plans/2026-09-22-ai-video-finder-mvp.md`
+for the implementation plan.
 
-First, run the development server:
+## Local development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    npm install
+    npm run dev
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tests
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    npm test
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Updating an affiliate status
 
-## Learn More
+When an affiliate program accepts the site, edit `data/products.ts`:
 
-To learn more about Next.js, take a look at the following resources:
+1. Set that product's `affiliateStatus` to `"active"`.
+2. Set `affiliateUrl` to the real affiliate link.
+3. Commit and push — Vercel redeploys automatically.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+No other code changes are needed; `/go/[slug]` picks up the change via
+`lib/redirect.ts`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+Hosted on Vercel's free Hobby tier, connected to the `master` branch of
+this repo (`TomAlkalai/ai-video-tool-finder` on GitHub). Pushing to
+`master` triggers an automatic redeploy.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Domain: `aivideofinder.com`, DNS pointed at Vercel per the records shown
+in the Vercel project's Settings → Domains.
