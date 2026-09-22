@@ -38,7 +38,7 @@ export const products: Product[] = [
   {
     name: "InVideo",
     slug: "invideo",
-    category: ["youtube", "faceless", "ads"],
+    category: ["youtube", "faceless", "ads", "tiktok"],
     pricing: "Free plan; paid plans from ~$20/mo billed annually",
     freePlan: true,
     mainFeatures: [
