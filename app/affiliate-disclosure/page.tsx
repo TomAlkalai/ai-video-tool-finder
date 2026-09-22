@@ -8,8 +8,10 @@ export const metadata: Metadata = {
 export default function AffiliateDisclosurePage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="text-3xl font-bold tracking-tight">Affiliate Disclosure</h1>
-      <div className="mt-6 space-y-4 text-gray-700">
+      <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+        Affiliate Disclosure
+      </h1>
+      <div className="mt-6 space-y-4 text-slate-700">
         <p>
           AI Video Tool Finder is supported by affiliate relationships. When
           you click a &quot;Visit&quot; link on this site and sign up for a

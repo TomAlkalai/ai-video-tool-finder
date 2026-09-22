@@ -9,10 +9,10 @@ export function UseCaseGrid({ items }: { items: UseCaseItem[] }) {
         <Link
           key={item.href}
           href={item.href}
-          className="rounded-lg border border-gray-200 p-5 hover:border-indigo-400"
+          className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition-colors hover:border-slate-300"
         >
-          <h3 className="font-semibold">{item.label}</h3>
-          <p className="mt-1 text-sm text-gray-500">{item.description}</p>
+          <h3 className="font-semibold text-slate-900">{item.label}</h3>
+          <p className="mt-1 text-sm text-slate-500">{item.description}</p>
         </Link>
       ))}
     </div>

@@ -15,10 +15,12 @@ const guides = [
 export default function Home() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-16 pb-24">
-      <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+      <div className="flex flex-col items-start justify-between gap-6 border-b border-slate-200 pb-10 sm:flex-row sm:items-end">
         <div>
-          <h1 className="text-4xl font-bold tracking-tight">AI Video Tool Finder</h1>
-          <p className="mt-4 max-w-2xl text-lg text-gray-600">
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+            AI Video Tool Finder
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-slate-600">
             Search, filter, and compare AI video tools side by side. No hands-on
             testing claims &mdash; a clear breakdown of pricing, features, and
             trade-offs from official sources.
@@ -26,7 +28,7 @@ export default function Home() {
         </div>
         <Link
           href="/find-my-tool"
-          className="whitespace-nowrap rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:border-indigo-400"
+          className="whitespace-nowrap rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-slate-400 hover:text-slate-900"
         >
           Not sure what to make? Ask our AI &rarr;
         </Link>
@@ -36,8 +38,8 @@ export default function Home() {
         <ToolBrowser products={products} />
       </div>
 
-      <div id="guides" className="mt-20">
-        <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-400">
+      <div id="guides" className="mt-20 border-t border-slate-200 pt-12">
+        <h2 className="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-500">
           Buying guides by use case
         </h2>
         <UseCaseGrid items={guides} />

@@ -20,22 +20,24 @@ export default async function ComparePage({
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-16">
-      <h1 className="text-3xl font-bold tracking-tight">Compare AI Video Tools</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+        Compare AI Video Tools
+      </h1>
 
       {products.length < 2 ? (
-        <p className="mt-6 text-gray-600">
+        <p className="mt-6 text-slate-600">
           Select at least two tools to compare from the{" "}
-          <Link href="/" className="underline">
+          <Link href="/" className="font-medium text-blue-600 hover:underline">
             tool browser
           </Link>
           .
         </p>
       ) : (
         <>
-          <div className="mt-8 overflow-x-auto">
+          <div className="mt-8 overflow-x-auto rounded-lg border border-slate-200 bg-white shadow-sm">
             <ComparisonTable products={products} />
           </div>
-          <div className="mt-10">
+          <div className="mt-12 border-t border-slate-200 pt-6">
             <DisclosureNote />
           </div>
         </>

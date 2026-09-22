@@ -9,8 +9,10 @@ export const metadata: Metadata = {
 export default function FindMyToolPage() {
   return (
     <main className="mx-auto max-w-2xl px-4 py-16">
-      <h1 className="text-3xl font-bold tracking-tight">Not sure what to make?</h1>
-      <p className="mt-4 text-gray-600">
+      <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+        Not sure what to make?
+      </h1>
+      <p className="mt-4 text-lg text-slate-600">
         Answer two quick questions and we&apos;ll point you at a starting pick. This
         is a simple decision tree over the same comparisons on this site, not a
         model analyzing your answers.

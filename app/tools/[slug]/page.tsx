@@ -7,6 +7,7 @@ import { recommendationPages } from "@/data/recommendation-pages";
 import { comparisonPages } from "@/data/comparison-pages";
 import { AffiliateCta } from "@/components/AffiliateCta";
 import { DisclosureNote } from "@/components/DisclosureNote";
+import { CheckIcon, WarningIcon } from "@/components/icons";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -42,39 +43,50 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="text-3xl font-bold tracking-tight">{product.name}</h1>
-      <p className="mt-2 text-gray-500">{product.pricing}</p>
-      <p className="mt-1 text-xs text-gray-400">Checked {product.lastVerified}</p>
+      <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+        {product.name}
+      </h1>
+      <p className="mt-2 text-lg text-slate-600">{product.pricing}</p>
+      <p className="mt-1 text-xs text-slate-400">Checked {product.lastVerified}</p>
 
-      <p className="mt-6 text-gray-700">{product.targetUsers}</p>
+      <p className="mt-6 text-slate-700">{product.targetUsers}</p>
 
       <div className="mt-8">
         <AffiliateCta product={product} label={`Visit ${product.name}`} />
       </div>
 
-      <h2 className="mt-10 text-sm font-semibold uppercase tracking-wide text-gray-400">
+      <h2 className="mt-12 text-xs font-semibold uppercase tracking-wide text-slate-500">
         Main features
       </h2>
-      <ul className="mt-3 list-disc pl-5 text-gray-700">
+      <ul className="mt-3 space-y-1.5 text-slate-700">
         {product.mainFeatures.map((f) => (
-          <li key={f}>{f}</li>
+          <li key={f} className="flex items-start gap-2">
+            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-slate-400" />
+            <span>{f}</span>
+          </li>
         ))}
       </ul>
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2">
+      <div className="mt-10 grid gap-8 rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:grid-cols-2">
         <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-400">Pros</h2>
-          <ul className="mt-3 list-disc pl-5 text-gray-700">
+          <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Pros</h2>
+          <ul className="mt-3 space-y-1.5">
             {product.pros.map((pro) => (
-              <li key={pro}>{pro}</li>
+              <li key={pro} className="flex items-start gap-2 text-slate-700">
+                <CheckIcon className="mt-0.5 h-3.5 w-3.5 shrink-0 text-green-600" />
+                <span>{pro}</span>
+              </li>
             ))}
           </ul>
         </div>
         <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-400">Cons</h2>
-          <ul className="mt-3 list-disc pl-5 text-gray-700">
+          <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Cons</h2>
+          <ul className="mt-3 space-y-1.5">
             {product.cons.map((con) => (
-              <li key={con}>{con}</li>
+              <li key={con} className="flex items-start gap-2 text-slate-700">
+                <WarningIcon className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-600" />
+                <span>{con}</span>
+              </li>
             ))}
           </ul>
         </div>
@@ -82,13 +94,13 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
       {guides.length > 0 && (
         <>
-          <h2 className="mt-10 text-sm font-semibold uppercase tracking-wide text-gray-400">
+          <h2 className="mt-12 text-xs font-semibold uppercase tracking-wide text-slate-500">
             {product.name} in our guides
           </h2>
           <ul className="mt-3 space-y-1">
             {guides.map((g) => (
               <li key={g.href}>
-                <Link href={g.href} className="text-indigo-600 hover:underline">
+                <Link href={g.href} className="font-medium text-blue-600 hover:underline">
                   {g.label}
                 </Link>
               </li>
@@ -97,7 +109,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         </>
       )}
 
-      <div className="mt-10">
+      <div className="mt-12 border-t border-slate-200 pt-6">
         <DisclosureNote />
       </div>
     </main>

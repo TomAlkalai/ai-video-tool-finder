@@ -30,13 +30,13 @@ export function QuizFlow() {
     const page = recommendationPages.find((p) => p.slug === result.pageSlug)!;
 
     return (
-      <div className="rounded-lg border border-gray-200 p-6">
-        <p className="text-sm text-gray-500">Our pick for you</p>
-        <h2 className="mt-1 text-2xl font-bold">{product.name}</h2>
-        <p className="mt-2 text-gray-700">{product.targetUsers}</p>
-        <div className="mt-4 flex flex-wrap items-center gap-4">
+      <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Our pick for you</p>
+        <h2 className="mt-2 text-2xl font-bold text-slate-900">{product.name}</h2>
+        <p className="mt-2 text-slate-600">{product.targetUsers}</p>
+        <div className="mt-5 flex flex-wrap items-center gap-4">
           <AffiliateCta product={product} />
-          <Link href={`/${page.slug}`} className="text-sm text-indigo-600 hover:underline">
+          <Link href={`/${page.slug}`} className="text-sm font-medium text-blue-600 hover:underline">
             See the full comparison &rarr;
           </Link>
         </div>
@@ -46,7 +46,7 @@ export function QuizFlow() {
             setAnswers({});
             setStep(0);
           }}
-          className="mt-6 text-sm text-gray-400 hover:underline"
+          className="mt-6 text-sm text-slate-400 hover:text-slate-600"
         >
           Start over
         </button>
@@ -55,18 +55,18 @@ export function QuizFlow() {
   }
 
   return (
-    <div className="rounded-lg border border-gray-200 p-6">
-      <p className="text-sm text-gray-400">
+    <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
         Question {step + 1} of {quizQuestions.length}
       </p>
-      <h2 className="mt-1 text-xl font-semibold">{question.prompt}</h2>
-      <div className="mt-4 flex flex-col gap-2">
+      <h2 className="mt-2 text-xl font-semibold text-slate-900">{question.prompt}</h2>
+      <div className="mt-5 flex flex-col gap-2">
         {question.options.map((opt) => (
           <button
             key={opt.value}
             type="button"
             onClick={() => answer(opt.value)}
-            className="rounded-md border border-gray-300 px-4 py-2 text-left text-sm hover:border-indigo-400"
+            className="rounded-lg border border-slate-200 px-4 py-2.5 text-left text-sm text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50"
           >
             {opt.label}
           </button>
