@@ -55,4 +55,11 @@ describe("ComparisonTable", () => {
     expect(screen.getByRole("link", { name: "VEED" })).toHaveAttribute("href", "/tools/veed");
     expect(screen.getByRole("link", { name: "Descript" })).toHaveAttribute("href", "/tools/descript");
   });
+
+  it("shows a Yes/No free-plan indicator for both truth values", () => {
+    const mixed: Product[] = [products[0], { ...products[1], freePlan: false }];
+    render(<ComparisonTable products={mixed} />);
+    expect(screen.getByText("Yes")).toBeInTheDocument();
+    expect(screen.getByText("No")).toBeInTheDocument();
+  });
 });
