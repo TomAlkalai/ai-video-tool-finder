@@ -7,15 +7,15 @@ const links = [
 
 export function Nav() {
   return (
-    <header className="border-b border-gray-200">
+    <header className="border-b border-slate-200 bg-white">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-        <Link href="/" className="font-semibold">
+        <Link href="/" className="text-base font-semibold text-slate-900">
           AI Video Tool Finder
         </Link>
-        <ul className="flex items-center gap-6 text-sm">
+        <ul className="flex items-center gap-6 text-sm text-slate-600">
           {links.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="hover:underline">
+              <Link href={link.href} className="hover:text-slate-900">
                 {link.label}
               </Link>
             </li>
@@ -23,7 +23,7 @@ export function Nav() {
           <li>
             <Link
               href="/find-my-tool"
-              className="rounded-md border border-gray-300 px-3 py-1.5 hover:border-indigo-400"
+              className="rounded-lg border border-slate-300 px-3 py-1.5 font-medium text-slate-700 hover:border-slate-400 hover:text-slate-900"
             >
               Ask our AI
             </Link>
