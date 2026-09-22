@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import type { Product } from "@/data/products";
+import { getCheapestSlug } from "@/lib/pricing";
 import { AffiliateCta } from "./AffiliateCta";
 import { CheckIcon, DashIcon, WarningIcon } from "./icons";
 
@@ -51,9 +52,26 @@ function ConCard({ items }: { items: string[] }) {
   );
 }
 
-const rows: { label: string; render: (p: Product) => ReactNode }[] = [
-  { label: "Pricing", render: (p) => <span className="font-medium text-slate-900">{p.pricing}</span> },
-  { label: "Free plan", render: (p) => <FreePlanIndicator freePlan={p.freePlan} /> },
+function CheapestBadge() {
+  return (
+    <span className="ml-2 inline-flex items-center rounded-md bg-green-50 px-1.5 py-0.5 text-xs font-semibold text-green-700">
+      Cheapest
+    </span>
+  );
+}
+
+function buildRows(cheapestSlug: string | null): { label: string; render: (p: Product) => ReactNode }[] {
+  return [
+    {
+      label: "Pricing",
+      render: (p) => (
+        <span className="font-medium text-slate-900">
+          {p.pricing}
+          {p.slug === cheapestSlug && <CheapestBadge />}
+        </span>
+      ),
+    },
+    { label: "Free plan", render: (p) => <FreePlanIndicator freePlan={p.freePlan} /> },
   {
     label: "Main features",
     render: (p) => (
@@ -67,12 +85,15 @@ const rows: { label: string; render: (p: Product) => ReactNode }[] = [
       </ul>
     ),
   },
-  { label: "Best for", render: (p) => <span className="text-slate-700">{p.targetUsers}</span> },
-  { label: "Pros", render: (p) => <ProCard items={p.pros} /> },
-  { label: "Cons", render: (p) => <ConCard items={p.cons} /> },
-];
+    { label: "Best for", render: (p) => <span className="text-slate-700">{p.targetUsers}</span> },
+    { label: "Pros", render: (p) => <ProCard items={p.pros} /> },
+    { label: "Cons", render: (p) => <ConCard items={p.cons} /> },
+  ];
+}
 
 export function ComparisonTable({ products }: { products: Product[] }) {
+  const rows = buildRows(getCheapestSlug(products));
+
   return (
     <table className="w-full min-w-[640px] border-separate border-spacing-0 text-left text-sm">
       <thead>

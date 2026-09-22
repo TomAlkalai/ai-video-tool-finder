@@ -9,6 +9,7 @@ const product: Product = {
   category: [],
   pricing: "",
   freePlan: true,
+  startingPriceUSD: null,
   mainFeatures: [],
   targetUsers: "",
   pros: [],

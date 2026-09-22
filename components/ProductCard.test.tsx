@@ -9,6 +9,7 @@ const product: Product = {
   category: [],
   pricing: "Free plan; paid from $12/mo",
   freePlan: true,
+  startingPriceUSD: 12,
   mainFeatures: ["Auto captions", "Timeline editor", "Brand kit", "Templates"],
   targetUsers: "Creators",
   pros: [],
@@ -37,5 +38,16 @@ describe("ProductCard", () => {
     expect(checkbox).toBeChecked();
     checkbox.click();
     expect(onToggle).toHaveBeenCalledOnce();
+  });
+
+  it("shows a Free plan badge when the product has one, and no Cheapest badge by default", () => {
+    render(<ProductCard product={product} />);
+    expect(screen.getByText("Free plan")).toBeInTheDocument();
+    expect(screen.queryByText("Cheapest")).not.toBeInTheDocument();
+  });
+
+  it("shows a Cheapest badge when isCheapest is true", () => {
+    render(<ProductCard product={product} isCheapest />);
+    expect(screen.getByText("Cheapest")).toBeInTheDocument();
   });
 });

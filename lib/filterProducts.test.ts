@@ -9,6 +9,7 @@ function makeProduct(overrides: Partial<Product>): Product {
     category: [],
     pricing: "",
     freePlan: false,
+    startingPriceUSD: null,
     mainFeatures: [],
     targetUsers: "",
     pros: [],

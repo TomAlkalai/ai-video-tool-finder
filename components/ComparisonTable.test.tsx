@@ -10,6 +10,7 @@ const products: Product[] = [
     category: [],
     pricing: "Free plan; paid from $12/mo",
     freePlan: true,
+    startingPriceUSD: 12,
     mainFeatures: ["Auto captions"],
     targetUsers: "Creators",
     pros: ["Fast"],
@@ -23,8 +24,9 @@ const products: Product[] = [
     name: "Descript",
     slug: "descript",
     category: [],
-    pricing: "Free plan; paid from $12/mo",
+    pricing: "Free plan; paid from $15/mo",
     freePlan: true,
+    startingPriceUSD: 15,
     mainFeatures: ["Transcript editing"],
     targetUsers: "Podcasters",
     pros: ["Text-based editing"],
@@ -41,7 +43,8 @@ describe("ComparisonTable", () => {
     render(<ComparisonTable products={products} />);
     expect(screen.getByText("VEED")).toBeInTheDocument();
     expect(screen.getByText("Descript")).toBeInTheDocument();
-    expect(screen.getAllByText(/Free plan; paid from \$12\/mo/)).toHaveLength(2);
+    expect(screen.getByText(/Free plan; paid from \$12\/mo/)).toBeInTheDocument();
+    expect(screen.getByText(/Free plan; paid from \$15\/mo/)).toBeInTheDocument();
   });
 
   it("renders a CTA linking through /go/[slug] for every product", () => {
@@ -61,5 +64,16 @@ describe("ComparisonTable", () => {
     render(<ComparisonTable products={mixed} />);
     expect(screen.getByText("Yes")).toBeInTheDocument();
     expect(screen.getByText("No")).toBeInTheDocument();
+  });
+
+  it("marks the lowest-priced product as Cheapest", () => {
+    render(<ComparisonTable products={products} />);
+    expect(screen.getAllByText("Cheapest")).toHaveLength(1);
+  });
+
+  it("shows no Cheapest badge when no product has a starting price", () => {
+    const noPrices: Product[] = products.map((p) => ({ ...p, startingPriceUSD: null }));
+    render(<ComparisonTable products={noPrices} />);
+    expect(screen.queryByText("Cheapest")).not.toBeInTheDocument();
   });
 });

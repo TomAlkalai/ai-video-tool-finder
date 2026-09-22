@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import type { Product } from "@/data/products";
 import { categoryFilters } from "@/data/categories";
 import { filterProducts } from "@/lib/filterProducts";
+import { getCheapestSlug } from "@/lib/pricing";
 import { ProductCard } from "./ProductCard";
 import { CompareBar } from "./CompareBar";
 
@@ -17,6 +18,8 @@ export function ToolBrowser({ products }: { products: Product[] }) {
     () => filterProducts(products, { query, category, freePlanOnly }),
     [products, query, category, freePlanOnly]
   );
+
+  const cheapestSlug = useMemo(() => getCheapestSlug(products), [products]);
 
   function toggleSlug(slug: string) {
     setSelectedSlugs((prev) =>
@@ -78,6 +81,7 @@ export function ToolBrowser({ products }: { products: Product[] }) {
           <ProductCard
             key={product.slug}
             product={product}
+            isCheapest={product.slug === cheapestSlug}
             compare={{
               checked: selectedSlugs.includes(product.slug),
               onToggle: () => toggleSlug(product.slug),

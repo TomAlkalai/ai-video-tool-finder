@@ -7,9 +7,11 @@ import { AffiliateCta } from "./AffiliateCta";
 export function ProductCard({
   product,
   compare,
+  isCheapest,
 }: {
   product: Product;
   compare?: { checked: boolean; onToggle: () => void };
+  isCheapest?: boolean;
 }) {
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
@@ -33,6 +35,20 @@ export function ProductCard({
           </label>
         )}
       </div>
+      {(isCheapest || product.freePlan) && (
+        <div className="mt-2 flex flex-wrap gap-1.5">
+          {isCheapest && (
+            <span className="inline-flex items-center rounded-md bg-green-50 px-1.5 py-0.5 text-xs font-semibold text-green-700">
+              Cheapest
+            </span>
+          )}
+          {product.freePlan && (
+            <span className="inline-flex items-center rounded-md bg-blue-50 px-1.5 py-0.5 text-xs font-semibold text-blue-700">
+              Free plan
+            </span>
+          )}
+        </div>
+      )}
       <p className="mt-1 text-sm text-slate-500">{product.pricing}</p>
       <p className="mt-3 text-sm text-slate-700">{product.targetUsers}</p>
       <ul className="mt-3 space-y-1 text-sm text-slate-600">
