@@ -17,18 +17,18 @@ export function CompareBar({
         ) : (
           <p className="text-sm font-medium text-slate-700">{selectedSlugs.length} tools selected.</p>
         )}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={onClear}
-            className="text-sm font-medium text-slate-500 hover:text-slate-700"
+            className="inline-flex min-h-[40px] items-center px-2 text-sm font-medium text-slate-500 hover:text-slate-700"
           >
             Clear
           </button>
           {selectedSlugs.length >= 2 && (
             <Link
               href={`/compare?tools=${selectedSlugs.join(",")}`}
-              className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-800"
+              className="inline-flex min-h-[44px] items-center rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-800"
             >
               Compare {selectedSlugs.length} tools
             </Link>

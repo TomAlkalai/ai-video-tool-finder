@@ -8,6 +8,7 @@ import { comparisonPages } from "@/data/comparison-pages";
 import { AffiliateCta } from "@/components/AffiliateCta";
 import { DisclosureNote } from "@/components/DisclosureNote";
 import { CheckIcon, WarningIcon } from "@/components/icons";
+import { ToolLogo } from "@/components/ToolLogo";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -43,9 +44,12 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-        {product.name}
-      </h1>
+      <div className="flex items-center gap-3">
+        <ToolLogo slug={product.slug} name={product.name} size={40} />
+        <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          {product.name}
+        </h1>
+      </div>
       <p className="mt-2 text-lg text-slate-600">{product.pricing}</p>
       <p className="mt-1 text-xs text-slate-400">Checked {product.lastVerified}</p>
 

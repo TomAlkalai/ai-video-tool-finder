@@ -1,0 +1,16 @@
+export const logoBySlug: Record<string, string> = {
+  veed: "/logos/veed.ico",
+  invideo: "/logos/invideo.ico",
+  pictory: "/logos/pictory.png",
+  descript: "/logos/descript.png",
+  heygen: "/logos/heygen.ico",
+  synthesia: "/logos/synthesia.png",
+  runway: "/logos/runway.png",
+  magnific: "/logos/magnific.png",
+  viggle: "/logos/viggle.png",
+  fliki: "/logos/fliki.png",
+  arcads: "/logos/arcads.jpg",
+  higgsfield: "/logos/higgsfield.png",
+  akool: "/logos/akool.png",
+  vivideo: "/logos/vivideo.svg",
+};

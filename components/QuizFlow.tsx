@@ -46,7 +46,7 @@ export function QuizFlow() {
             setAnswers({});
             setStep(0);
           }}
-          className="mt-6 text-sm text-slate-400 hover:text-slate-600"
+          className="mt-4 min-h-[40px] px-1 text-sm text-slate-400 hover:text-slate-600"
         >
           Start over
         </button>
@@ -66,7 +66,7 @@ export function QuizFlow() {
             key={opt.value}
             type="button"
             onClick={() => answer(opt.value)}
-            className="rounded-lg border border-slate-200 px-4 py-2.5 text-left text-sm text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50"
+            className="min-h-[44px] rounded-lg border border-slate-200 px-4 py-2.5 text-left text-sm text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50"
           >
             {opt.label}
           </button>

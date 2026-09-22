@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Product } from "@/data/products";
 import { getCheapestSlug } from "@/lib/pricing";
 import { AffiliateCta } from "./AffiliateCta";
+import { ToolLogo } from "./ToolLogo";
 import { CheckIcon, DashIcon, WarningIcon } from "./icons";
 
 function FreePlanIndicator({ freePlan }: { freePlan: boolean }) {
@@ -106,7 +107,11 @@ export function ComparisonTable({ products }: { products: Product[] }) {
                 i > 0 ? "border-l border-l-slate-200" : ""
               }`}
             >
-              <Link href={`/tools/${p.slug}`} className="text-base font-semibold text-slate-900 hover:text-blue-600">
+              <Link
+                href={`/tools/${p.slug}`}
+                className="flex items-center gap-2 text-base font-semibold text-slate-900 hover:text-blue-600"
+              >
+                <ToolLogo slug={p.slug} name={p.name} size={24} />
                 {p.name}
               </Link>
             </th>

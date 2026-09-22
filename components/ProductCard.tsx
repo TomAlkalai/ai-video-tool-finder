@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { Product } from "@/data/products";
 import { AffiliateCta } from "./AffiliateCta";
+import { ToolLogo } from "./ToolLogo";
 
 export function ProductCard({
   product,
@@ -15,21 +16,22 @@ export function ProductCard({
 }) {
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-      <div className="flex items-start justify-between gap-2">
+      <div className="flex items-center justify-between gap-2">
         <Link
           href={`/tools/${product.slug}`}
-          className="text-lg font-semibold text-slate-900 hover:text-blue-600"
+          className="flex min-w-0 items-center gap-2 text-lg font-semibold text-slate-900 hover:text-blue-600"
         >
-          {product.name}
+          <ToolLogo slug={product.slug} name={product.name} size={28} />
+          <span className="truncate">{product.name}</span>
         </Link>
         {compare && (
-          <label className="flex shrink-0 items-center gap-1.5 text-xs font-medium text-slate-500">
+          <label className="flex shrink-0 items-center gap-1.5 py-2 text-xs font-medium text-slate-500">
             <input
               type="checkbox"
               aria-label={`Compare ${product.name}`}
               checked={compare.checked}
               onChange={compare.onToggle}
-              className="h-3.5 w-3.5 rounded border-slate-300 text-slate-900 focus:ring-slate-400"
+              className="h-4 w-4 rounded border-slate-300 text-slate-900 focus:ring-slate-400"
             />
             Compare
           </label>
