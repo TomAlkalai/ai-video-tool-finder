@@ -32,13 +32,14 @@ export function ToolBrowser({ products }: { products: Product[] }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search tools by name..."
-          className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm sm:max-w-xs"
+          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200 sm:max-w-xs"
         />
-        <label className="flex items-center gap-2 text-sm text-gray-600">
+        <label className="flex items-center gap-2 text-sm text-slate-600">
           <input
             type="checkbox"
             checked={freePlanOnly}
             onChange={(e) => setFreePlanOnly(e.target.checked)}
+            className="h-3.5 w-3.5 rounded border-slate-300 text-slate-900 focus:ring-slate-400"
           />
           Free plan only
         </label>
@@ -48,10 +49,10 @@ export function ToolBrowser({ products }: { products: Product[] }) {
         <button
           type="button"
           onClick={() => setCategory(undefined)}
-          className={`rounded-full border px-3 py-1 text-sm ${
+          className={`rounded-md border px-3 py-1.5 text-sm font-medium ${
             category === undefined
-              ? "border-indigo-600 bg-indigo-600 text-white"
-              : "border-gray-300 text-gray-600"
+              ? "border-slate-900 bg-slate-900 text-white"
+              : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
           }`}
         >
           All
@@ -61,10 +62,10 @@ export function ToolBrowser({ products }: { products: Product[] }) {
             key={c.value}
             type="button"
             onClick={() => setCategory(c.value)}
-            className={`rounded-full border px-3 py-1 text-sm ${
+            className={`rounded-md border px-3 py-1.5 text-sm font-medium ${
               category === c.value
-                ? "border-indigo-600 bg-indigo-600 text-white"
-                : "border-gray-300 text-gray-600"
+                ? "border-slate-900 bg-slate-900 text-white"
+                : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
             }`}
           >
             {c.label}
@@ -86,7 +87,7 @@ export function ToolBrowser({ products }: { products: Product[] }) {
       </div>
 
       {filtered.length === 0 && (
-        <p className="mt-10 text-center text-sm text-gray-500">
+        <p className="mt-10 text-center text-sm text-slate-500">
           No tools match those filters.
         </p>
       )}
