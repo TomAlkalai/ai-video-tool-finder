@@ -13,4 +13,6 @@ export const logoBySlug: Record<string, string> = {
   higgsfield: "/logos/higgsfield.png",
   akool: "/logos/akool.png",
   vivideo: "/logos/vivideo.svg",
+  pollo: "/logos/pollo.png",
+  getimg: "/logos/getimg.png",
 };
