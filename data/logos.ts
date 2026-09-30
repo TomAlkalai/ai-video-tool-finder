@@ -15,4 +15,10 @@ export const logoBySlug: Record<string, string> = {
   vivideo: "/logos/vivideo.svg",
   pollo: "/logos/pollo.png",
   getimg: "/logos/getimg.png",
+  mozify: "/logos/mozify.png",
+  pixverse: "/logos/pixverse.png",
+  videoweb: "/logos/videoweb.png",
+  byteplus: "/logos/byteplus.png",
+  makeugc: "/logos/makeugc.png",
+  vidofy: "/logos/vidofy.ico",
 };
