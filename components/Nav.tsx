@@ -9,8 +9,15 @@ export function Nav() {
   return (
     <header className="border-b border-slate-200 bg-white">
       <nav className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-4">
-        <Link href="/" className="shrink-0 whitespace-nowrap text-sm font-semibold text-slate-900 sm:text-base">
-          AI Video Tool Finder
+        <Link href="/" className="min-w-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="AI Video Tool Finder"
+            width={652}
+            height={96}
+            className="h-auto max-h-8 w-auto max-w-full sm:max-h-9"
+          />
         </Link>
         <ul className="flex items-center gap-3 text-sm text-slate-600 sm:gap-6">
           {links.map((link) => (
